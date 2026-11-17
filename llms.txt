@@ -1,0 +1,15 @@
+# agent-approval-gate
+
+> Human approval for AI agent tool calls without approval fatigue. A Python decorator with risk tiers, previews and an audit log. Works with any framework.
+
+agent-approval-gate is a framework-free Python decorator that pauses risky AI agent tool calls for a human yes/no.
+It is built to avoid approval fatigue: low risk calls run silently, medium risk asks once per session, high risk asks every time.
+Each prompt can show a preview of the real effect (for example the files about to be deleted), and every decision is written to a JSONL audit log.
+When no human is present (CI, cron) it denies by default and logs the denial.
+
+Install: pip install agent-approval-gate
+Usage: from agent_approval_gate import gate, then @gate(risk="high") on any function your agent can call.
+
+## Links
+- README: https://github.com/Bhavishaahuja/agent-approval-gate#readme
+- Issues: https://github.com/Bhavishaahuja/agent-approval-gate/issues

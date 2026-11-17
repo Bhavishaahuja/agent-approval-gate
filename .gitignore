@@ -1,0 +1,26 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# editors / os
+.vscode/
+.idea/
+.DS_Store
+
+# never commit real personal data
+*.mbox
+real_*.csv
+private/
+voice.json
+applications.csv
+approval_audit.jsonl
+.env
