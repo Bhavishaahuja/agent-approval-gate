@@ -9,6 +9,10 @@ When no human is present (CI, cron) it denies by default and logs the denial.
 
 Install: pip install agent-approval-gate
 Usage: from agent_approval_gate import gate, then @gate(risk="high") on any function your agent can call.
+Answers at the prompt: y (once), n (default), a (always this session, medium only), e (edit arguments as JSON).
+Options: preview=fn, on_deny="raise"|"return", redact=[...], name=..., approver=fn. Works on async functions.
+Policy file: approval.toml with [tools] name = "low"|"medium"|"high" (wildcards allowed) and [defaults] non_interactive, audit_log.
+Try it: uvx agent-approval-gate demo
 
 ## Links
 - README: https://github.com/Bhavishaahuja/agent-approval-gate#readme
