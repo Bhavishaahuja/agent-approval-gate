@@ -1,8 +1,19 @@
 Output demo/demo.gif
+Set Shell "bash"
 Set FontSize 18
 Set Width 1100
 Set Height 720
 Set TypingSpeed 40ms
+
+# off camera: make `uvx agent-approval-gate` run this checkout (works before it is on PyPI)
+# and build it once so the recording does not show a build
+Hide
+Type `uvx() { command uvx --from "$PWD" "$@"; }`
+Enter
+Type "uvx agent-approval-gate --version >/dev/null 2>&1; clear"
+Enter
+Sleep 15s
+Show
 
 Type "uvx agent-approval-gate demo"
 Enter
