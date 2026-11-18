@@ -8,6 +8,9 @@ Set TypingSpeed 40ms
 # off camera: make `uvx agent-approval-gate` run this checkout (works before it is on PyPI)
 # and build it once so the recording does not show a build
 Hide
+# vhs starts a clean bash without ~/.bashrc, so add the usual places uv lives
+Type `export PATH="$HOME/.local/bin:$HOME/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:/opt/homebrew/bin:/usr/local/bin:$PATH"`
+Enter
 Type `uvx() { command uvx --from "$PWD" "$@"; }`
 Enter
 Type "uvx agent-approval-gate --version >/dev/null 2>&1; clear"
