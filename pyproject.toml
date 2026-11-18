@@ -1,6 +1,6 @@
 [project]
 name = "agent-approval-gate"
-version = "0.0.1"
+version = "0.1.0"
 description = "Human approval for AI agent tool calls without approval fatigue. A Python decorator with risk tiers, previews and an audit log. Works with any framework."
 readme = "README.md"
 license = "MIT"
