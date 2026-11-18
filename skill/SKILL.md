@@ -19,4 +19,9 @@ For each one:
 4. Where you can, pass `preview=` a small function that takes the same arguments and returns a short
    human readable description of the real effect (for example the list of files about to be deleted).
 
+5. Inside an agent loop, prefer `on_deny="return"` so a denial becomes a message the model can react to
+   instead of an exception that ends the run.
+6. Put `@gate` underneath framework decorators such as LangChain `@tool` or OpenAI Agents `@function_tool`.
+7. Pass `redact=[...]` for arguments that hold secrets (tokens, passwords) so they never reach the audit log.
+
 Do not gate read-only tools as high. Too many prompts is how people end up approving everything blindly.
