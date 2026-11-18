@@ -140,7 +140,7 @@ Every decision is appended to `approval_audit.jsonl`, one JSON object per line. 
 
 **Who is it for?** Anyone building agents that can delete, send, pay or deploy things.
 
-**How is it different from LangChain or OpenAI Agents SDK approvals?** Those pause. This one also handles fatigue: risk tiers, "always for this session", previews of the real effect, a policy file and an audit log. And it is framework-free.
+**How is it different from LangChain or OpenAI Agents SDK approvals?** Those are built into one framework. They pause the whole run, save its state and let you resume it later, which is ideal for a web app where someone approves hours later. This is a decorator on any plain function that asks right away. On top of that it gives you risk tiers, a policy file you can change without touching code, and an audit log. It works with both of those frameworks and with your own agent loop.
 
 **What happens in CI or cron when nobody is there to answer?** It denies and logs. Safe by default.
 
@@ -148,16 +148,19 @@ Every decision is appended to `approval_audit.jsonl`, one JSON object per line. 
 
 ## Compared to
 
-| | agent-approval-gate | Framework built-in approval | Hand-rolled `input()` |
-|---|---|---|---|
-| Works with any framework | yes | no | yes |
-| Risk tiers | yes | no | no |
-| Remember "yes" for the session | yes | partial | no |
-| Preview of the real effect | yes | no | no |
-| Audit log | yes | no | no |
-| Safe default with no human present | yes | varies | no (hangs) |
+Checked against the [LangChain human-in-the-loop docs](https://docs.langchain.com/oss/python/langchain/human-in-the-loop) and the [OpenAI Agents SDK human-in-the-loop docs](https://openai.github.io/openai-agents-python/human_in_the_loop/) in November 2026.
 
-<!-- TODO: double check the middle column against current docs before launch -->
+| | agent-approval-gate | LangChain `HumanInTheLoopMiddleware` | OpenAI Agents SDK `needs_approval` | Hand-rolled `input()` |
+|---|---|---|---|---|
+| Works with any framework | yes | LangChain agents only | Agents SDK tools only | yes |
+| Different rules per tool | yes, low / medium / high | yes, per tool plus a `when` condition | yes, per tool or a callable | by hand |
+| Remember "yes" for later calls | yes, `a` for medium risk | not documented | yes, `always_approve=True` | no |
+| Custom preview of the call | yes, `preview=` | yes, `description` callable | tool name and arguments only | by hand |
+| Edit arguments before running | yes | yes, `edit` decision | no, approve or reject | no |
+| Rules in a config file, not code | yes, `approval.toml` | no | no | no |
+| Audit log of decisions | yes, JSONL | not built in | not built in | no |
+| No human present (CI, cron) | denies and logs | pauses, state saved to resume later | pauses, state saved to resume later | hangs |
+| Approve later, from another process | no, terminal only in v1 | yes, via a checkpointer | yes, via `RunState` | no |
 
 ## How it works
 
