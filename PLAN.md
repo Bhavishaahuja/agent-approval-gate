@@ -22,7 +22,7 @@ Goal: ship everything the README promises. That means risk tiers, previews, reme
 - [x] **9. Pluggable approver.** `gate(..., approver=fn)` and `set_approver(fn)`. The terminal prompt is just the built-in approver. This leaves room for Slack or phone approvals later.
 - [x] **10. Tests.** Every tier × answer, terminal vs no terminal, policy, audit, edit, async and threading.
 - [x] **11. `demo` command.** A scripted fake agent in a temporary folder with three tools: `read_file` (low), `rename_file` (medium) and `delete_files` (high, with a preview). It prints the audit log at the end.
-- [ ] **12. Release.** Record the GIF (`vhs demo/demo.tape`), check the comparison table against current framework docs, bump to 0.1.0 and tag `v0.1.0` to publish.
+- [ ] **12. Release.** GIF recorded. Still to do: check the comparison table against current framework docs, bump to 0.1.0 and tag `v0.1.0` to publish.
 
 ## Later (not v0.1)
 

@@ -4,7 +4,6 @@ Pause risky AI agent actions for a human yes or no. A plain Python decorator wit
 
 > Approval prompts fail when you see 40 a day. This one only asks when it matters.
 
-<!-- TODO: demo GIF here (under 20 seconds). Record with: vhs demo/demo.tape -->
 ![demo](demo/demo.gif)
 
 ## Quickstart
